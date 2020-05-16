@@ -1,63 +1,48 @@
+# -*- coding: utf-8 -*-
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+from dash.dependencies import Input, Output
 import plotly.graph_objs as go
+import numpy as np
 
-########### Define your variables
-beers=['Chesapeake Stout', 'Snake Dog IPA', 'Imperial Porter', 'Double Dog IPA']
-ibu_values=[35, 60, 85, 75]
-abv_values=[5.4, 7.1, 9.2, 4.3]
-color1='lightblue'
-color2='darkgreen'
-mytitle='Beer Comparison'
-tabtitle='beer!'
-myheading='Flying Dog Beers'
-label1='IBU'
-label2='ABV'
-githublink='https://github.com/austinlasseter/flying-dog-beers'
-sourceurl='https://www.flyingdog.com/beers/'
-
-########### Set up the chart
-bitterness = go.Bar(
-    x=beers,
-    y=ibu_values,
-    name=label1,
-    marker={'color':color1}
-)
-alcohol = go.Bar(
-    x=beers,
-    y=abv_values,
-    name=label2,
-    marker={'color':color2}
+x1 = np.linspace(0, 10, 1000)
+graph = go.Scatter(
+	x=x1,
+	y=np.sin(x1)
 )
 
-beer_data = [bitterness, alcohol]
-beer_layout = go.Layout(
-    barmode='group',
-    title = mytitle
-)
+dat = [graph]
 
-beer_fig = go.Figure(data=beer_data, layout=beer_layout)
+beer_fig = go.Figure(data=dat)
 
-
-########### Initiate the app
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__)
 server = app.server
-app.title=tabtitle
-
-########### Set up the layout
-app.layout = html.Div(children=[
-    html.H1(myheading),
-    dcc.Graph(
-        id='flyingdog',
-        figure=beer_fig
+app.title = "nsjdfkjsd"
+app.layout = html.Div([
+    dcc.Slider(
+        id='my-slider',
+        min=0,
+        max=20,
+        step=0.5,
+        value=1,
     ),
-    html.A('Code on Github', href=githublink),
-    html.Br(),
-    html.A('Data Source', href=sourceurl),
-    ]
-)
+    html.Div(id='slider-output-container'),
+	html.Div(
+	style = {"width":"500px", "height":"300px"},
+	children=[dcc.Graph(id='flyingdog'),]
+	),
+])
+
+
+@app.callback(
+    [Output('slider-output-container', 'children'), Output('flyingdog', 'figure')],
+    [Input('my-slider', 'value')])
+def update_output(value):
+
+	return 'You have selected "{}"'.format(value), 
+	{"data": [{"x":x1, "y":np.sin(value*x1), "name":"sin({}x)".format(value), "showlegend":True}]}
+	
 
 if __name__ == '__main__':
-    app.run_server()
+    app.run_server(debug=True)
