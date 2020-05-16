@@ -380,7 +380,9 @@ app.layout = html.Div(style ={'backgroundColor': colors['background']}, children
     dcc.Graph(
         id='flyingdog',
         figure={'data': [
-                {'x': t, 'y': I, 'name': 'Infectados'}
+                {'x': t, 'y': I, 'name': 'Infectados'},
+		{'x': t, 'y': 0.05*CT, 'name': 'Numero cumulativo de casos criticos'},
+		{'x': t, 'y': M, 'name': 'Mortos'}
             ],
 	       'layout': {
 			'plot_bgcolor': colors['background'],
