@@ -2,6 +2,7 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objs as go
+import numpy as np
 
 ########### Define your variables
 beers=['Chesapeake Stout', 'Snake Dog IPA', 'Imperial Porter', 'Double Dog IPA']
@@ -18,21 +19,15 @@ githublink='https://github.com/austinlasseter/flying-dog-beers'
 sourceurl='https://www.flyingdog.com/beers/'
 
 ########### Set up the chart
-
-alcohol = go.Bar(
-    x=beers,
-    y=abv_values,
-    name=label2,
-    marker={'color':color2}
+x1 = np.linspace(0, 10, 1000)
+graph = go.Scatter(
+	x=x1,
+	y=np.sin(x1)
 )
 
-beer_data = [alcohol]
-beer_layout = go.Layout(
-    barmode='group',
-    title = mytitle
-)
+dat = [graph]
 
-beer_fig = go.Figure(data=beer_data, layout=beer_layout)
+beer_fig = go.Figure(data=dat)
 
 
 ########### Initiate the app
