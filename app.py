@@ -12,17 +12,19 @@ color1='lightblue'
 color2='darkgreen'
 mytitle='Beer Comparison'
 tabtitle='beer!'
-myheading='Flying Dog Beers'
+myheading='MEU PAU VOANDO PELO UNIVERSO'
 label1='IBU'
 label2='ABV'
 githublink='https://github.com/austinlasseter/flying-dog-beers'
 sourceurl='https://www.flyingdog.com/beers/'
 
 ########### Set up the chart
-x1 = np.linspace(0, 10, 1000)
+k = 0.4
+t = np.linspace(0, 100, 1000)
+ft = np.exp(k*t)
 graph = go.Scatter(
-	x=x1,
-	y=np.sin(x1)
+	x=t,
+	y=ft
 )
 
 dat = [graph]
@@ -43,9 +45,9 @@ app.layout = html.Div(children=[
         id='flyingdog',
         figure=beer_fig
     ),
-    html.A('Code on Github', href=githublink),
+    html.A('MEU PAU', href=githublink),
     html.Br(),
-    html.A('Data Source', href=sourceurl),
+    html.A('VOANDO', href=sourceurl),
     ]
 )
 
