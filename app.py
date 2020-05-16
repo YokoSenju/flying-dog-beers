@@ -53,22 +53,36 @@ graph1 = go.Scatter(
 
 graph2 = go.Scatter(
 	x=t,
-	y=Infectados
+	y=Infectados,
+	name = "Infectados"
 )
 
 graph3 = go.Scatter(
 	x=t,
-	y=Recuperados
+	y=Recuperados,
+	name = "Recuperados"
 )
 
 graph4 = go.Scatter(
 	x=t,
-	y=Mortos
+	y=Mortos,
+	name = "Mortos"
 )
 
 dat = [graph1,graph2,graph3,graph4]
 
 beer_fig = go.Figure(data=dat)
+
+beer_fig.update_layout(
+    title="Modelo SIR",
+    xaxis_title="Tempo (dias)",
+    yaxis_title="Numero de casos",
+    font=dict(
+        family="Courier New, monospace",
+        size=18,
+        color="#7f7f7f"
+    )
+)
 
 
 ########### Initiate the app
