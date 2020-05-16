@@ -394,8 +394,8 @@ app.layout = html.Div(style ={'backgroundColor': colors['background']}, children
             }
         ),
         style={
-            'width': 400,
-            'height': 200,
+            'width': 100,
+            'height': 50,
             'border': 'thin grey solid'
         }
     ),	
