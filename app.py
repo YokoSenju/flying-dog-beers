@@ -362,6 +362,43 @@ colors = {
     'text': '#7FDBFF'
 }
 
+
+##############TestingZone#############
+app.layout = html.Div(style={'backgroundColor': colors['background']}, children=[
+    html.H1(
+        children='Hello Dash',
+        style={
+            'textAlign': 'center',
+            'color': colors['text']
+        }
+    ),
+
+    html.Div(children='Dash: A web application framework for Python.', style={
+        'textAlign': 'center',
+        'color': colors['text']
+    }),
+
+    dcc.Graph(
+        id='example-graph-2',
+        figure={
+            'data': [
+                {'x': [1, 2, 3], 'y': [4, 1, 2], 'type': 'bar', 'name': 'SF'},
+                {'x': [1, 2, 3], 'y': [2, 4, 5], 'type': 'bar', 'name': u'Montréal'},
+            ],
+            'layout': {
+                'plot_bgcolor': colors['background'],
+                'paper_bgcolor': colors['background'],
+                'font': {
+                    'color': colors['text']
+                }
+            }
+        }
+    )
+])
+
+#####################################
+
+
 ########### Set up the layout
 app.layout = html.Div(style ={'backgroundColor': colors['background']}, children=[
     html.H1(
@@ -374,7 +411,16 @@ app.layout = html.Div(style ={'backgroundColor': colors['background']}, children
     ),
     dcc.Graph(
         id='flyingdog',
-        figure=beer_fig
+        figure={beer_fig,
+	       'layout':{
+			'plot_bgcolor': colors['background'],
+                	'paper_bgcolor': colors['background'],
+                	'font': {
+                    		'color': colors['text']
+			}
+	       }
+	}         
+	     
     ),
     html.A('Github', href=githublink),
     html.Br(),
