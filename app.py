@@ -13,7 +13,7 @@ color1='lightblue'
 color2='darkgreen'
 mytitle='Beer Comparison'
 tabtitle='Click COVID-19'
-myheading='Click COVID-19: uma ferramenta interativa para o estudo da pandemia'
+myheading='Click COVID-19'
 label1='IBU'
 label2='ABV'
 githublink='https://github.com/YokoSenju/flying-dog-beers'
@@ -376,7 +376,12 @@ app.layout = html.Div(style ={'backgroundColor': colors['background']}, children
 		    'color': colors['text']
 	    }
 		 
-    ),	
+    ),
+    html.Div(children=' Uma ferramenta interativa para o estudo da pandemia', style={
+        'textAlign': 'center',
+        'color': colors['text']
+    }),
+	
     dcc.Graph(
         id='flyingdog',
         figure={'data': [
