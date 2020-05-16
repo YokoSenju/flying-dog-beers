@@ -3,6 +3,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objs as go
 import numpy as np
+from scipy.integrate import odeint
 
 ########### Define your variables
 beers=['Chesapeake Stout', 'Snake Dog IPA', 'Imperial Porter', 'Double Dog IPA']
@@ -19,9 +20,26 @@ githublink='https://github.com/austinlasseter/flying-dog-beers'
 sourceurl='https://www.flyingdog.com/beers/'
 
 ########### Set up the chart
-k = 0.4
-t = np.linspace(0, 100, 1000)
-ft = np.exp(k*t)
+N=1500
+I0=2.0
+beta = 0.296
+gamma = 0.07
+mu = 0.007
+
+def f(x,t):
+	S = x[0]
+	I = x[1]
+	R = x[2]
+	M = x[3]
+	dSdt = -beta*I*S/N
+	dIdt = beta*I*S/N -gamma*I - mu*I
+	dRdt = gamma*I
+	dMdt = mu*I
+	return [dSdt,dIdt,dRdt,dMdt]
+t = np.linspace(0, 60)
+corona0 = [N-I0,I0,0,0]
+corona = odeint(f,corona0,t)
+ft = corona[:,1]
 graph = go.Scatter(
 	x=t,
 	y=ft
