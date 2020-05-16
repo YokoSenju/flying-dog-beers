@@ -380,7 +380,7 @@ app.layout = html.Div(style ={'backgroundColor': colors['background']}, children
     dcc.Graph(
         id='flyingdog',
         figure={beer_fig,
-	       'layout':{
+	       'layout': {
 			'plot_bgcolor': colors['background'],
                 	'paper_bgcolor': colors['background'],
                 	'font': {
