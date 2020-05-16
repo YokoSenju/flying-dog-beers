@@ -39,13 +39,34 @@ def f(x,t):
 t = np.linspace(0, 60)
 corona0 = [N-I0,I0,0,0]
 corona = odeint(f,corona0,t)
-ft = corona[:,1]
-graph = go.Scatter(
+Susceptiveis = corona [:,0]
+Infectados = corona[:,1]
+Recuperados = corona[:,2]
+Mortos = corona[:,3]
+
+graph1 = go.Scatter(
 	x=t,
-	y=ft
+	y=Susceptiveis,
+	name="Susceptiveis"
+
 )
 
-dat = [graph]
+graph2 = go.Scatter(
+	x=t,
+	y=Infectados
+)
+
+graph3 = go.Scatter(
+	x=t,
+	y=Recuperados
+)
+
+graph4 = go.Scatter(
+	x=t,
+	y=Mortos
+)
+
+dat = [graph1,graph2,graph3,graph4]
 
 beer_fig = go.Figure(data=dat)
 
