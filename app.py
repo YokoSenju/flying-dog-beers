@@ -363,7 +363,27 @@ colors = {
 }
 
 
-
+##############TestZone###############
+app.layout = html.Div(children=[
+    html.H1('Header 1'),
+    html.H2('Header 2'),
+    html.Div(
+        children=html.Img(
+            src="https://plot.ly/~chris/1639.png",
+            style={
+                'maxWidth': '100%',
+                'maxHeight': '100%',
+                'marginLeft': 'auto',
+                'marginRight': 'auto'
+            }
+        ),
+        style={
+            'width': 400,
+            'height': 200,
+            'border': 'thin grey solid'
+        }
+    )
+])
 #####################################
 
 
@@ -382,6 +402,22 @@ app.layout = html.Div(style ={'backgroundColor': colors['background']}, children
         'color': colors['text']
     }),
 	
+    html.Div(
+        children=html.Img(
+            src="https://raw.githubusercontent.com/YokoSenju/flying-dog-beers/master/image.png",
+            style={
+                'maxWidth': '100%',
+                'maxHeight': '100%',
+                'marginLeft': 'auto',
+                'marginRight': 'auto'
+            }
+        ),
+        style={
+            'width': 400,
+            'height': 200,
+            'border': 'thin grey solid'
+        }
+    )	
     dcc.Graph(
         id='flyingdog',
         figure={'data': [
