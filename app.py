@@ -398,7 +398,7 @@ app.layout = html.Div(style ={'backgroundColor': colors['background']}, children
             'height': 200,
             'border': 'thin grey solid'
         }
-    )	
+    ),	
     dcc.Graph(
         id='flyingdog',
         figure={'data': [
