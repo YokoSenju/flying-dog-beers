@@ -28,10 +28,7 @@ app.layout = html.Div([
         value=1,
     ),
     html.Div(id='slider-output-container'),
-	html.Div(
-	style = {"width":"500px", "height":"300px"},
-	children=[dcc.Graph(id='flyingdog'),]
-	),
+	dcc.Graph(id='flyingdog'),
 ])
 
 
