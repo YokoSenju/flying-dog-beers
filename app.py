@@ -357,6 +357,13 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 app.title=tabtitle
 
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+
+colors = {
+    'background': '#111111',
+    'text': '#7FDBFF'
+}
+
 ########### Set up the layout
 app.layout = html.Div(children=[
     html.H1(myheading),
