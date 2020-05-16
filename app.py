@@ -12,11 +12,11 @@ abv_values=[5.4, 7.1, 9.2, 4.3]
 color1='lightblue'
 color2='darkgreen'
 mytitle='Beer Comparison'
-tabtitle='beer!'
-myheading='MEU PAU VOANDO PELO UNIVERSO'
+tabtitle='Click COVID-19'
+myheading='Click COVID-19: uma ferramenta interativa para o estudo da pandemia'
 label1='IBU'
 label2='ABV'
-githublink='https://github.com/austinlasseter/flying-dog-beers'
+githublink='https://github.com/YokoSenju/flying-dog-beers'
 sourceurl='https://www.flyingdog.com/beers/'
 
 ########### Set up the chart
@@ -330,7 +330,7 @@ graph2 = go.Scatter(
 graph3 = go.Scatter(
 	x=t,
 	y=0.05*CT,
-	name = "Cumulative number of critical cases"
+	name = "Casos graves cumulativos"
 )
 
 
@@ -364,9 +364,9 @@ app.layout = html.Div(children=[
         id='flyingdog',
         figure=beer_fig
     ),
-    html.A('MEU PAU', href=githublink),
+    html.A('Github', href=githublink),
     html.Br(),
-    html.A('VOANDO', href=sourceurl),
+    html.A('Source', href=sourceurl),
     ]
 )
 
