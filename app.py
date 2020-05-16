@@ -357,16 +357,21 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 app.title=tabtitle
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-
 colors = {
     'background': '#111111',
     'text': '#7FDBFF'
 }
 
 ########### Set up the layout
-app.layout = html.Div(children=[
-    html.H1(myheading),
+app.layout = html.Div(style ={'backgroundColor': colors['background']}, children=[
+    html.H1(
+	    children = myheading,
+	    style={
+		    'textAlign': 'center',
+		    'color': colors['text']
+	    }
+		 
+    ),
     dcc.Graph(
         id='flyingdog',
         figure=beer_fig
