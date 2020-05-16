@@ -18,13 +18,19 @@ githublink='https://github.com/austinlasseter/flying-dog-beers'
 sourceurl='https://www.flyingdog.com/beers/'
 
 ########### Set up the chart
-bitterness = go.Bar(
+
+alcohol = go.Bar(
     x=beers,
-    y=ibu_values,
-    name=label1,
-    marker={'color':color1}
+    y=abv_values,
+    name=label2,
+    marker={'color':color2}
 )
 
+beer_data = [alcohol]
+beer_layout = go.Layout(
+    barmode='group',
+    title = mytitle
+)
 
 beer_fig = go.Figure(data=beer_data, layout=beer_layout)
 
